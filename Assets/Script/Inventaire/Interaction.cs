@@ -1,65 +1,73 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+using System.Collections;
+using System.Collections.Generic;
 
-public class InteractionInventaire : MonoBehaviour
+public class InteractionInventory : MonoBehaviour
 {
-    public Camera camera;
-    public TMP_Text itemPickText;
+    public Camera cam;
+    public TMP_Text pickUpText;
+
     private List<string> inventory = new List<string>();
 
 
-    public void InteractPressed()
+    // Système pour interagir avec TOUT les objets
+    public void Interact()
     {
+        if (cam == null)
+            cam = Camera.main; 
+
         RaycastHit hit;
 
-        Vector3 pointVisee = camera.transform.position + camera.transform.forward * 0.5f;
-        if (Physics.Raycast(pointVisee, camera.transform.forward, out hit, 1.8f))
+        Vector3 viewStart = cam.transform.position + cam.transform.forward * 0.5f;
+
+        if (Physics.Raycast(viewStart, cam.transform.forward, out hit, 1.8f))
         {
-            string itemName = hit.collider.gameObject.name;
-            if (itemName == "Key" || itemName == "Crowbar") 
+            string objectName = hit.collider.gameObject.name;
+
+            // Ici on va vérifier si l'objet est une clé ou un pied de biche
+            if (objectName.StartsWith("Key") || objectName.StartsWith("Crowbar"))
             {
-                AddToInventory(itemName);
-                ShowItemPickedText(itemName);
-                Debug.Log("Objet ramassé : " + itemName);
+                inventory.Add(objectName.StartsWith("Key") ? "Key" : "Crowbar");
+                ShowPickup(objectName);
                 Destroy(hit.collider.gameObject);
+                return;
             }
 
+            // Ici on va vérifier si le l'objet a le script InteractionObstacle, si oui on lance le script de interactWithObstacle
+            InteractionObstacle obstacle = hit.collider.GetComponent<InteractionObstacle>();
+            if (obstacle != null)
+                obstacle.InteractWithObstacle();
         }
-
     }
 
-    void AddToInventory(string itemName)
-    {
-        inventory.Add(itemName);
 
-        Debug.Log("Inventaire actuel :");
-        foreach (string item in inventory)
-            Debug.Log(" - " + item);
+    // Ca va etre utile pour interactionObstacle
+    public bool HasItem(string item)
+    {
+        return inventory.Contains(item);
     }
 
-    void ShowItemPickedText(string itemName)
+    // Afficher le texte de ramassage
+    private void ShowPickup(string name)
     {
-        itemPickText.text = "Picked up " + itemName;
-        StartCoroutine(FadeText(itemPickText));
+        pickUpText.text = "Picked up " + name;
+        StartCoroutine(FadeText(pickUpText));
     }
 
-    IEnumerator FadeText(TMP_Text text)
+    public IEnumerator FadeText(TMP_Text txt)
     {
-        text.gameObject.SetActive(true);
-        text.canvasRenderer.SetAlpha(0f);
+        txt.gameObject.SetActive(true);
+        txt.canvasRenderer.SetAlpha(0f);
 
-        text.CrossFadeAlpha(1f, 1f, false);
+        txt.CrossFadeAlpha(1f, 1f, false);
         yield return new WaitForSeconds(1f);
 
+        txt.CrossFadeAlpha(0f, 1f, false);
         yield return new WaitForSeconds(1f);
 
-        text.CrossFadeAlpha(0f, 1f, false);
-        yield return new WaitForSeconds(1f);
-
-        text.gameObject.SetActive(false);
+        txt.gameObject.SetActive(false);
     }
 }
 
-// https://www.youtube.com/watch?v=iOdxMFt7RYQ&t=107s
+// https://www.youtube.com/watch?v=iOdxMFt7RYQ

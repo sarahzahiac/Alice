@@ -1,55 +1,68 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
-using TMPro;
 
 public class Gui : MonoBehaviour
 {
-    public Texture2D handTexture;
-    public Texture2D circleTexture;
-    public float handScale = 0.2f;
-    public float circleScale = 0.1f;
-    public TMP_Text messageText;
+    public Texture2D mainTexture;
+    public Texture2D cercleTexture;
+    public float tailleMain = 0.2f;
+    public float tailleCercle = 0.1f;
 
-    private void OnGUI()
+    private InteractionObstacle obstacleActuel = null;
+
+
+    // Ici ca sera l'affichage avec la main etc. Ca vient principalement de la vidéo de Creak Games sur l'inventaire
+    void OnGUI()
     {
+        if (obstacleActuel != null)
+        {
+            obstacleActuel.SetHighlight(false);  // ← correction ici
+            obstacleActuel = null;
+        }
+
         // Check if we are currently pointing at an object
         RaycastHit hit;
+        Vector3 departVisuel = Camera.main.transform.position + Camera.main.transform.forward * 0.5f;
 
-        Vector3 raycastStartPos = Camera.main.transform.position + Camera.main.transform.forward * 0.5f;
+        bool isHandImageActive  = false;
 
-        bool isHandImageActive = false;
-
-        if (Physics.Raycast(raycastStartPos, Camera.main.transform.forward, out hit, 1.8f))
+        if (Physics.Raycast(departVisuel, Camera.main.transform.forward, out hit, 1.8f))
         {
             // Calculate the screen position of the hit point
-            Vector3 screenPos = Camera.main.WorldToScreenPoint(hit.point);
+            Vector3 posEcran = Camera.main.WorldToScreenPoint(hit.point);
 
-            if (hit.collider.name == "Key" ||
-                hit.collider.name == "Crowbar")
-                
+            if (hit.collider.name.StartsWith("Key") || hit.collider.name.StartsWith("Crowbar"))
             {
-                isHandImageActive = true;
-                GUI.DrawTexture(new Rect(screenPos.x - (handTexture.width * handScale / 2),
-                                         Screen.height - screenPos.y - (handTexture.height * handScale / 2),
-                                         handTexture.width * handScale,
-                                         handTexture.height * handScale),
-                                handTexture);
+                isHandImageActive  = true;
+
+                GUI.DrawTexture(new Rect(
+                    posEcran.x - (mainTexture.width * tailleMain / 2),
+                    Screen.height - posEcran.y - (mainTexture.height * tailleMain / 2),
+                    mainTexture.width * tailleMain,
+                    mainTexture.height * tailleMain),
+                    mainTexture);
+            }
+
+            InteractionObstacle obstacle = hit.collider.GetComponent<InteractionObstacle>();
+            if (obstacle != null)
+            {
+                obstacle.SetHighlight(true);  
+                obstacleActuel = obstacle;
             }
         }
 
-        if (!isHandImageActive)
+        if (!isHandImageActive )
         {
-            Vector3 screenPos = Camera.main.WorldToScreenPoint(Camera.main.transform.position + Camera.main.transform.forward * 2f);
+            // Calculate the screen position of the forward point
+            Vector3 pos = Camera.main.WorldToScreenPoint(Camera.main.transform.position + Camera.main.transform.forward * 2f);
 
-            GUI.DrawTexture(new Rect(screenPos.x - (circleTexture.width * circleScale / 2),
-                                      Screen.height - screenPos.y - (circleTexture.height * circleScale / 2),
-                                      circleTexture.width * circleScale,
-                                      circleTexture.height * circleScale),
-                             circleTexture);
+            GUI.DrawTexture(new Rect(
+                pos.x - (cercleTexture.width * tailleCercle / 2),
+                Screen.height - pos.y - (cercleTexture.height * tailleCercle / 2),
+                cercleTexture.width * tailleCercle,
+                cercleTexture.height * tailleCercle),
+                cercleTexture);
         }
     }
 }
 
-// https://www.youtube.com/watch?v=iOdxMFt7RYQ&t=107s
+// https://www.youtube.com/watch?v=iOdxMFt7RYQ

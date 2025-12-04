@@ -3,8 +3,8 @@ using UnityEngine;
 public class PlayerLook : MonoBehaviour
 {
     public Camera playerCamera;
-    public float xSensitivity = 200f;
-    public float ySensitivity = 200f;
+    public float xSensitivity = 100f;
+    public float ySensitivity = 100f;
 
     private float xRotation = 0f;
 

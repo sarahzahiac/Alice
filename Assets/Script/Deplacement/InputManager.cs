@@ -3,13 +3,14 @@ using UnityEngine.InputSystem;
 
 public class InputManager : MonoBehaviour
 {
-private PlayerInput playerinput;
+    private PlayerInput playerinput;
     private PlayerInput.OnFootActions onFoot;
 
     private PlayerMotor motor;
     private PlayerLook look;
-    public InteractionInventaire interaction; 
-    public Headbob headbob; 
+
+    public InteractionInventory interaction;
+    public Headbob headbob;
 
     void Awake()
     {
@@ -18,39 +19,41 @@ private PlayerInput playerinput;
 
         motor = GetComponent<PlayerMotor>();
         look = GetComponent<PlayerLook>();
-        headbob = GetComponent<Headbob>(); 
+        headbob = GetComponent<Headbob>();
 
-        onFoot.Jump.performed += ctx => motor.Jump();
-        onFoot.Interact.performed += ctx => interaction.InteractPressed();
+        if (headbob == null)
+            headbob = FindObjectOfType<Headbob>();
+
+        onFoot.Jump.performed += ctx => motor?.Jump();
+
+        onFoot.Interact.performed += ctx =>
+        {
+            if (interaction != null)
+                interaction.Interact();
+        };
     }
 
-    void Update() 
+    void Update()
     {
-        Vector2 lookInput = onFoot.Look.ReadValue<Vector2>();
-        look.ProcessLook(lookInput);
+        if (look != null)
+            look.ProcessLook(onFoot.Look.ReadValue<Vector2>());
     }
 
     void FixedUpdate()
     {
-        Vector2 moveInput = onFoot.Movement.ReadValue<Vector2>(); 
-        
-        motor.ProcessMove(moveInput); 
-        
-        if (headbob != null)
-        {
-            headbob.ReceiveMovementInput(moveInput); 
-        }
+        Vector2 move = onFoot.Movement.ReadValue<Vector2>();
+        motor?.ProcessMove(move);
+        headbob?.ReceiveMovement(move);
     }
-    private void OnEnable()
-    {
+
+    private void OnEnable(){
         onFoot.Enable();
     }
 
-    private void OnDisable()
-    {
+    private void OnDisable(){
         onFoot.Disable();
     }
+
 }
 
-
-// https://www.youtube.com/watch?v=rJqP5EesxLk&t=465s
+// https://www.youtube.com/watch?v=rJqP5EesxLk&t=355s

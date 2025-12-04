@@ -2,31 +2,65 @@ using UnityEngine;
 
 public class Headbob : MonoBehaviour
 {
-    public Transform camHolder; 
+    [Header("Normal headbob")]
+    public Transform camHolder;
     public float amplitude = 0.1f;
-    public float frequency = 10f;
+    public float frequence = 10f;
 
     private Vector3 startPos;
-    private Vector2 currentMoveInput;
+    private Vector2 moveInput;
+
+    [Header("Shake head reaction")]
+    private bool isShaking = false;
+    private float shakeDuration = 0f;
+    private float shakeForce = 0f;
+    private float shakeSpeed = 0f;
+    private float shakeTimer = 0f;
 
     void Awake()
     {
         startPos = camHolder.localPosition;
     }
 
-    public void ReceiveMovementInput(Vector2 input)
+    public void ReceiveMovement(Vector2 input)
     {
-        currentMoveInput = input;
+        moveInput = input;
+    }
+
+    public void ShakeHead(float duration, float force, float speed)
+    {
+        isShaking = true;
+        shakeDuration = duration;
+        shakeForce = force;
+        shakeSpeed = speed;
+        shakeTimer = 0f;
     }
 
     void Update()
     {
-        bool isMoving = currentMoveInput.sqrMagnitude > 0.01f;
-
-        if (isMoving)
+        if (isShaking)
         {
-            float bob = Mathf.Sin(Time.time * frequency) * amplitude;
-            camHolder.localPosition = startPos + new Vector3(0f, bob, 0f);
+            shakeTimer += Time.deltaTime * shakeSpeed;
+            float t = shakeTimer / shakeDuration;
+
+            if (t < 1f)
+            {
+                float x = Mathf.Sin(t * Mathf.PI * 2f) * shakeForce;
+                camHolder.localPosition = startPos + new Vector3(x, 0f, 0f);
+            }
+            else
+            {
+                isShaking = false;
+            }
+            return;
+        }
+
+        bool moving = moveInput.sqrMagnitude > 0.01f;
+
+        if (moving)
+        {
+            float y = Mathf.Sin(Time.time * frequence) * amplitude;
+            camHolder.localPosition = startPos + new Vector3(0f, y, 0f);
         }
         else
         {
@@ -35,4 +69,4 @@ public class Headbob : MonoBehaviour
     }
 }
 
-// Inspiration  https://www.youtube.com/watch?v=5MbR2qJK8Tc et https://www.youtube.com/watch?v=5MbR2qJK8Tc
+// https://www.youtube.com/watch?v=5MbR2qJK8Tc
