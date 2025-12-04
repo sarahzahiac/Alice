@@ -135,8 +135,6 @@ GameObject:
   - component: {fileID: 3135737020937469983}
   - component: {fileID: 3086679671278267399}
   - component: {fileID: 1547191313349170437}
-  - component: {fileID: 5567954761688416545}
-  - component: {fileID: 3393574752921721305}
   - component: {fileID: 7334709431894991311}
   m_Layer: 0
   m_Name: Player
@@ -217,33 +215,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!114 &5567954761688416545
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8833617747390475256}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a73b8d32672f67b4c8f98aeee6e6ae69, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::InputManager
---- !u!114 &3393574752921721305
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8833617747390475256}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1246f8c99175c4141b8d46cdee25cedf, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::PlayerMotor
-  speed: 5
-  gravityValue: -9.81
-  jumpHeight: 3
 --- !u!143 &7334709431894991311
 CharacterController:
   m_ObjectHideFlags: 0

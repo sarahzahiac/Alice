@@ -1,0 +1,30 @@
+using UnityEngine;
+
+public class PlayerLook : MonoBehaviour
+{
+    public Camera playerCamera;
+    public float xSensitivity = 200f;
+    public float ySensitivity = 200f;
+
+    private float xRotation = 0f;
+
+   public void ProcessLook(Vector2 input) 
+    {
+        float mouseX = input.x * Time.deltaTime * xSensitivity;
+        float mouseY = input.y * Time.deltaTime * ySensitivity;
+
+        xRotation -= mouseY;
+        xRotation = Mathf.Clamp(xRotation, -80f, 80f);
+
+        playerCamera.transform.localRotation = Quaternion.Euler(xRotation, 0f, 0f);
+        transform.Rotate(Vector3.up * mouseX);
+    }
+
+    void Start()
+    {
+        Cursor.lockState = CursorLockMode.Locked;
+        Cursor.visible = false;
+    }
+}
+
+//https://www.youtube.com/watch?v=rJqP5EesxLk&t=465s
