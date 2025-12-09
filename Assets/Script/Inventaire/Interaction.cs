@@ -34,6 +34,28 @@ public class InteractionInventory : MonoBehaviour
                 return;
             }
 
+            InteractionDoor door = hit.collider.GetComponent<InteractionDoor>();
+            if (door != null)
+            {
+                door.InteractDoor();
+                return;
+            }
+
+            InteractionDoorCadena lockedDoor = hit.collider.GetComponent<InteractionDoorCadena>();
+            if (lockedDoor != null)
+            {
+                lockedDoor.InteractDoor();
+                return;
+            }
+
+            InteractionDoorBarricaded barricadedDoor = hit.collider.GetComponent<InteractionDoorBarricaded>();
+            if (barricadedDoor != null)
+            {
+                barricadedDoor.InteractDoor();
+                return;
+            }
+
+
             // Ici on va vérifier si le l'objet a le script InteractionObstacle, si oui on lance le script de interactWithObstacle
             InteractionObstacle obstacle = hit.collider.GetComponent<InteractionObstacle>();
             if (obstacle != null)

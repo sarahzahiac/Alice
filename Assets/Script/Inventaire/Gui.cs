@@ -15,7 +15,7 @@ public class Gui : MonoBehaviour
     {
         if (obstacleActuel != null)
         {
-            obstacleActuel.SetHighlight(false);  // ← correction ici
+            obstacleActuel.SetHighlight(false);  
             obstacleActuel = null;
         }
 
@@ -30,7 +30,7 @@ public class Gui : MonoBehaviour
             // Calculate the screen position of the hit point
             Vector3 posEcran = Camera.main.WorldToScreenPoint(hit.point);
 
-            if (hit.collider.name.StartsWith("Key") || hit.collider.name.StartsWith("Crowbar"))
+            if (hit.collider.name.StartsWith("Key") || hit.collider.name.StartsWith("Crowbar")|| hit.collider.name.StartsWith("Door") || hit.collider.name.StartsWith("DoorLock") || hit.collider.name.StartsWith("DoorBarricaded"))
             {
                 isHandImageActive  = true;
 
@@ -41,6 +41,8 @@ public class Gui : MonoBehaviour
                     mainTexture.height * tailleMain),
                     mainTexture);
             }
+
+
 
             InteractionObstacle obstacle = hit.collider.GetComponent<InteractionObstacle>();
             if (obstacle != null)

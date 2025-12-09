@@ -21,9 +21,6 @@ public class InputManager : MonoBehaviour
         look = GetComponent<PlayerLook>();
         headbob = GetComponent<Headbob>();
 
-        if (headbob == null)
-            headbob = FindObjectOfType<Headbob>();
-
         onFoot.Jump.performed += ctx => motor?.Jump();
 
         onFoot.Interact.performed += ctx =>
