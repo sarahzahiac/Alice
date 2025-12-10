@@ -7,15 +7,25 @@ public class InteractionInventory : MonoBehaviour
 {
     public Camera cam;
     public TMP_Text pickUpText;
+    public TMP_Text pickUpJournal;   
+
 
     private List<string> inventory = new List<string>();
 
 
+
+    void Start()
+    {
+        if (pickUpJournal != null)
+            pickUpJournal.gameObject.SetActive(false);
+    }
     // Système pour interagir avec TOUT les objets
+
     public void Interact()
     {
         if (cam == null)
             cam = Camera.main; 
+        
 
         RaycastHit hit;
 
@@ -52,6 +62,24 @@ public class InteractionInventory : MonoBehaviour
             if (barricadedDoor != null)
             {
                 barricadedDoor.InteractDoor();
+                return;
+            }
+
+            journalRecuperation page = hit.collider.GetComponent<journalRecuperation>();
+            if (page != null)
+            {
+                page.InteractPage();
+
+                if (pickUpJournal != null)
+                {
+                    pickUpJournal.gameObject.SetActive(true);
+                    pickUpJournal.text = "Journal Pages: " + journalRecuperation.pagesCollected + "/" + journalRecuperation.totalPages;
+                    if (journalRecuperation.pagesCollected >= journalRecuperation.totalPages)
+                    {
+                        pickUpJournal.gameObject.SetActive(false);
+                    }
+                }
+
                 return;
             }
 

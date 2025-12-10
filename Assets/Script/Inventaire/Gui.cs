@@ -19,6 +19,9 @@ public class Gui : MonoBehaviour
             obstacleActuel = null;
         }
 
+        if (Camera.main == null)
+        return;
+
         // Check if we are currently pointing at an object
         RaycastHit hit;
         Vector3 departVisuel = Camera.main.transform.position + Camera.main.transform.forward * 0.5f;
@@ -30,7 +33,7 @@ public class Gui : MonoBehaviour
             // Calculate the screen position of the hit point
             Vector3 posEcran = Camera.main.WorldToScreenPoint(hit.point);
 
-            if (hit.collider.name.StartsWith("Key") || hit.collider.name.StartsWith("Crowbar")|| hit.collider.name.StartsWith("Door") || hit.collider.name.StartsWith("DoorLock") || hit.collider.name.StartsWith("DoorBarricaded"))
+            if (hit.collider.name.StartsWith("Key") || hit.collider.name.StartsWith("Crowbar")|| hit.collider.name.StartsWith("Door") || hit.collider.name.StartsWith("DoorLock") || hit.collider.name.StartsWith("DoorBarricaded") || hit.collider.name.StartsWith("journal"))
             {
                 isHandImageActive  = true;
 
