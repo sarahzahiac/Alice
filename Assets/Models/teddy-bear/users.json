@@ -1,0 +1,42 @@
+[
+  {
+    "username": "dandelion",
+    "email": "dandelion@example.com",
+    "password": "password123",
+    "location": "Montreal",
+    "role": "user",
+    "createdAt": "2025-01-01T00:00:00.000Z"
+  },
+  {
+    "username": "floraLover",
+    "email": "flora@example.com",
+    "password": "password123",
+    "location": "Quebec",
+    "role": "user",
+    "createdAt": "2025-01-01T00:00:00.000Z"
+  },
+  {
+    "username": "greenBeginner",
+    "email": "beginner@example.com",
+    "password": "password123",
+    "location": "Laval",
+    "role": "user",
+    "createdAt": "2025-01-01T00:00:00.000Z"
+  },
+  {
+    "username": "plantMaster",
+    "email": "master@example.com",
+    "password": "password123",
+    "location": "Ottawa",
+    "role": "user",
+    "createdAt": "2025-01-01T00:00:00.000Z"
+  },
+  {
+    "username": "herbQueen",
+    "email": "herb@example.com",
+    "password": "password123",
+    "location": "Sherbrooke",
+    "role": "user",
+    "createdAt": "2025-01-01T00:00:00.000Z"
+  }
+]
