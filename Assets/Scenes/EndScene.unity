@@ -623,8 +623,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 22.198, y: -212.9244}
-  m_SizeDelta: {x: 608.07, y: 138.6693}
+  m_AnchoredPosition: {x: -72.566, y: -394.18866}
+  m_SizeDelta: {x: 899.6, y: 234.907}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1241955626
 MonoBehaviour:
@@ -761,6 +761,67 @@ MonoBehaviour:
   quitButton: {fileID: 1241955626}
   playButton: {fileID: 1837729386}
   playerLook: {fileID: 0}
+--- !u!1001 &1461185249
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 2498129985288278136, guid: c485f7113e34ab7468da2c287a275d1d, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 628.5138
+      objectReference: {fileID: 0}
+    - target: {fileID: 2498129985288278136, guid: c485f7113e34ab7468da2c287a275d1d, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -499.31863
+      objectReference: {fileID: 0}
+    - target: {fileID: 2498129985288278136, guid: c485f7113e34ab7468da2c287a275d1d, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 542.7928
+      objectReference: {fileID: 0}
+    - target: {fileID: 2498129985288278136, guid: c485f7113e34ab7468da2c287a275d1d, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2498129985288278136, guid: c485f7113e34ab7468da2c287a275d1d, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2498129985288278136, guid: c485f7113e34ab7468da2c287a275d1d, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2498129985288278136, guid: c485f7113e34ab7468da2c287a275d1d, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2498129985288278136, guid: c485f7113e34ab7468da2c287a275d1d, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2498129985288278136, guid: c485f7113e34ab7468da2c287a275d1d, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2498129985288278136, guid: c485f7113e34ab7468da2c287a275d1d, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3766673027144464919, guid: c485f7113e34ab7468da2c287a275d1d, type: 3}
+      propertyPath: m_Name
+      value: MusicManager
+      objectReference: {fileID: 0}
+    - target: {fileID: 8992475745106039175, guid: c485f7113e34ab7468da2c287a275d1d, type: 3}
+      propertyPath: m_Volume
+      value: 0.16
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: c485f7113e34ab7468da2c287a275d1d, type: 3}
 --- !u!1 &1578104679
 GameObject:
   m_ObjectHideFlags: 0
@@ -795,8 +856,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 71.0759, y: 8.5579}
-  m_SizeDelta: {x: 1706.3213, y: 803.1443}
+  m_AnchoredPosition: {x: 0.0050201, y: -0.0049896}
+  m_SizeDelta: {x: 2560, y: 1440}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1578104681
 MonoBehaviour:
@@ -948,8 +1009,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 22.1974, y: -30.2014}
-  m_SizeDelta: {x: 608.0677, y: 131.837}
+  m_AnchoredPosition: {x: -72.565796, y: -66.16933}
+  m_SizeDelta: {x: 899.5984, y: 232.3407}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1837729386
 MonoBehaviour:
@@ -1177,3 +1238,4 @@ SceneRoots:
   - {fileID: 1050330474}
   - {fileID: 1618644947}
   - {fileID: 37037797}
+  - {fileID: 1461185249}

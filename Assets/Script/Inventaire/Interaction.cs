@@ -31,7 +31,7 @@ public class InteractionInventory : MonoBehaviour
 
         Vector3 viewStart = cam.transform.position + cam.transform.forward * 0.5f;
 
-        if (Physics.Raycast(viewStart, cam.transform.forward, out hit, 3.5f))
+        if (Physics.Raycast(viewStart, cam.transform.forward, out hit, 5f))
         {
             string objectName = hit.collider.gameObject.name;
 

@@ -8,7 +8,8 @@ using UnityEditor;
 
 public class UiMenu : MonoBehaviour
 {
-    public Button quitButton;   
+    public Button quitButton;  
+
     public Button playButton;   
     public PlayerLook playerLook;  
 
@@ -18,6 +19,9 @@ public class UiMenu : MonoBehaviour
         playButton.onClick.AddListener(PlayGame);
         playerLook.SetCursorState(true);
     }
+
+
+
 
     void QuitGame()
     {

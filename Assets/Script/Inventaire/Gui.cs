@@ -28,7 +28,7 @@ public class Gui : MonoBehaviour
 
         bool isHandImageActive  = false;
 
-        if (Physics.Raycast(departVisuel, Camera.main.transform.forward, out hit, 3.5f))
+        if (Physics.Raycast(departVisuel, Camera.main.transform.forward, out hit, 5f))
         {
             // Calculate the screen position of the hit point
             Vector3 posEcran = Camera.main.WorldToScreenPoint(hit.point);

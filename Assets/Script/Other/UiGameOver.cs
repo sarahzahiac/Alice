@@ -9,6 +9,7 @@ using UnityEditor;
 public class UiGameOver : MonoBehaviour
 {
     public Button quitButton;   
+
     public Button newGameButton;
     public Button restartButton;  
     public PlayerLook playerLook;  
@@ -28,6 +29,8 @@ public class UiGameOver : MonoBehaviour
             Application.Quit();  
         #endif
     }
+
+    
 
     void StartNewGame()
     {
