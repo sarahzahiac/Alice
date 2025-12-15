@@ -184,7 +184,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::UiMenu
   quitButton: {fileID: 89411092}
   playButton: {fileID: 718256471}
-  playerLook: {fileID: 0}
 --- !u!1 &62779802
 GameObject:
   m_ObjectHideFlags: 0
@@ -364,8 +363,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -655.4, y: -521.4645}
-  m_SizeDelta: {x: 593.08, y: 181.2349}
+  m_AnchoredPosition: {x: -481.42834, y: -521.4645}
+  m_SizeDelta: {x: 772.3868, y: 181.2349}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &89411092
 MonoBehaviour:
@@ -867,8 +866,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -655.39886, y: -282.61514}
-  m_SizeDelta: {x: 593.082, y: 191.4127}
+  m_AnchoredPosition: {x: -481.43, y: -282.61514}
+  m_SizeDelta: {x: 772.39, y: 191.4127}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &718256471
 MonoBehaviour:
@@ -1122,8 +1121,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 2560, y: 1440}
+  m_AnchoredPosition: {x: 360.13696, y: 0}
+  m_SizeDelta: {x: 3280.274, y: 1440}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1547522182
 MonoBehaviour:

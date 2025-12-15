@@ -11,13 +11,13 @@ public class UiMenu : MonoBehaviour
     public Button quitButton;  
 
     public Button playButton;   
-    public PlayerLook playerLook;  
 
     void Start()
     {
         quitButton.onClick.AddListener(QuitGame);
         playButton.onClick.AddListener(PlayGame);
-        playerLook.SetCursorState(true);
+        Cursor.lockState = CursorLockMode.None;
+        Cursor.visible = true;
     }
 
 

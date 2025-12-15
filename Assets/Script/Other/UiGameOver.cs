@@ -12,13 +12,13 @@ public class UiGameOver : MonoBehaviour
 
     public Button newGameButton;
     public Button restartButton;  
-    public PlayerLook playerLook;  
     void Start()
     {
         quitButton.onClick.AddListener(QuitGame);
         newGameButton.onClick.AddListener(StartNewGame);
         restartButton.onClick.AddListener(RestartGame);
-        playerLook.SetCursorState(true);
+        Cursor.lockState = CursorLockMode.None;
+        Cursor.visible = true;
     }
 
     void QuitGame()
